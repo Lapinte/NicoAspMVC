@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roomax", "Roomax\Roomax.csproj", "{6304ADDF-6DE5-4CDF-A153-DC0F67B73EAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roomax.Tests", "Roomax.Tests\Roomax.Tests.csproj", "{0F7CF7FA-5FE7-41FB-8805-FD58DB41ACCB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6304ADDF-6DE5-4CDF-A153-DC0F67B73EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6304ADDF-6DE5-4CDF-A153-DC0F67B73EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6304ADDF-6DE5-4CDF-A153-DC0F67B73EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6304ADDF-6DE5-4CDF-A153-DC0F67B73EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F7CF7FA-5FE7-41FB-8805-FD58DB41ACCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F7CF7FA-5FE7-41FB-8805-FD58DB41ACCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F7CF7FA-5FE7-41FB-8805-FD58DB41ACCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F7CF7FA-5FE7-41FB-8805-FD58DB41ACCB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D82F7FD7-DA39-46B1-9B34-61D324AE1621}
+	EndGlobalSection
+EndGlobal
