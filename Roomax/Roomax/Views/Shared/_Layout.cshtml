@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Roomax.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container ">
+        <nav class="row navbar navbar-expand-lg bg-info">
+            <ul class="nav">
+                <li><h1 class="lead text-white">Roomax</h1></li>
+                <li><a href="@Url.Action("Index", "Home")" class="col-2 text-white">Accueil</a></li>
+                <li><a href="@Url.RouteUrl("AboutRoute")" class="col-2 text-white">A propos</a></li>
+                <li><a href="@Url.Action("Create", "Users")" class="col-2 text-white">Nouvel Utilisateur</a></li>
+            </ul>
+        </nav>
+
+        @RenderBody()
+    </div>
+    <div class="container">
+        <div class="row">
+            <footer class="bg-light w-100">
+                &copy; POEC Rouen 2018
+            </footer>
+        </div>
+    </div>
+       
+
+    
+    
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

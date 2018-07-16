@@ -1,0 +1,57 @@
+﻿@model Roomax.Models.User
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="row">
+    <h1>Nouvel Utilisateur</h1>
+</div>
+
+<div class="container">
+    @using (Html.BeginForm("Create", "Users", System.Web.Mvc.FormMethod.Post))
+    {
+        <div class="row form-group">
+            @Html.LabelFor(x => x.LastName, new { @class = "col-3" })
+            @Html.EditorFor(x => x.LastName, null, new { htmlAttributes = new { @class = "form-control col-4" } })
+            @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="row form-group">
+            @Html.LabelFor(x => x.FirstName, new { @class = "col-3" })
+            @Html.EditorFor(x => x.FirstName, null, new { htmlAttributes = new { @class = "form-control col-4" } })
+            @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="row form-group">
+            @Html.LabelFor(x => x.Mail, new { @class = "col-3" })
+            @Html.EditorFor(x => x.Mail, null, new { htmlAttributes = new { @class = "form-control col-4" } })
+            @Html.ValidationMessageFor(x => x.Mail, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="row form-group">
+            @Html.LabelFor(x => x.BirthDate, new { @class = "col-3" })
+            @Html.EditorFor(x => x.BirthDate, null, new { htmlAttributes = new { @class = "form-control col-4" } })
+            @Html.ValidationMessageFor(x => x.BirthDate, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="row form-group">
+            @Html.LabelFor(x => x.Password, new { @class = "col-3" })
+            @Html.EditorFor(x => x.Password, null, new { htmlAttributes = new { @class = "form-control col-4" } })
+            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="row form-group">
+            @Html.LabelFor(x => x.ComfirmedPassword, new { @class = "col-3" })
+            @Html.EditorFor(x => x.ComfirmedPassword, null, new { htmlAttributes = new { @class = "form-control col-4" } })
+            @Html.ValidationMessageFor(x => x.ComfirmedPassword, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="row form-group justify-content-center">
+            <button type="submit" class="btn btn-outline-success col-6">--- === Ajouter === ---</button>
+        </div>
+    }
+</div>
+
+
