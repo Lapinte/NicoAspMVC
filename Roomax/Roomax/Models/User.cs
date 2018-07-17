@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Roomax.Models
 {
-    public class User
+    public class User : BaseModel
     {
+
+
         [Required(ErrorMessage = "Le champ {0} est obligatoire")]
         [Display(Name = "Nom :")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Le champ {0} doit contenir entre {2} et {1} caractères")]
@@ -46,5 +49,10 @@ ErrorMessage = "L'adresse mail n'est pas au bon format")]
         [DataType(DataType.Password)]
         public string ComfirmedPassword { get; set; }
 
+        [Required(ErrorMessage = "Civilité obligatoire")]
+        [Display(Name = "Civilité :")]
+        public int CivilityID { get; set; }
+        [ForeignKey("CivilityID")]
+        public Civility Civility { get; set; }
     }
 }

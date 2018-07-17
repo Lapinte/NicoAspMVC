@@ -5,3 +5,7 @@
 .field-validation-error {
     font-size: small;
 }
+
+span {
+    float : right;
+}
