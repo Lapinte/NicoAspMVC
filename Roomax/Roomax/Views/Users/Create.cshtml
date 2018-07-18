@@ -49,12 +49,12 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(x => x.ComfirmedPassword, new { @class = "col-12" })
-                @Html.EditorFor(x => x.ComfirmedPassword, null, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(x => x.ComfirmedPassword, "", new { @class = "text-danger" })
+                @Html.LabelFor(x => x.ConfirmedPassword, new { @class = "col-12" })
+                @Html.EditorFor(x => x.ConfirmedPassword, null, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.ConfirmedPassword, "", new { @class = "text-danger" })
             </div>
-
-            <div class="row form-group justify-content-center">
+            <div style="height: 20px"></div>
+            <div class="row form-group justify-content-center ">
                 <button type="submit" class="btn btn-outline-success col-7">--- === Ajouter === ---</button>
             </div>
         }

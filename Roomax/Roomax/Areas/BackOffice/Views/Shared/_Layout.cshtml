@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>_Layout</title>
+    <title>BackOffice | @ViewBag.Title</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Roomax.css" rel="stylesheet" />
 </head>
@@ -16,11 +16,9 @@
     <div class="container ">
         <nav class="row navbar navbar-expand-lg bg-info">
             <ul class="nav">
-                <li><h1 class="lead text-white">Roomax</h1></li>
-                <li><a href="@Url.Action("Index", "Home")" class="col-2 text-white">Accueil</a></li>
-                <li><a href="@Url.RouteUrl("AboutRoute")" class="col-2 text-white">A propos</a></li>
-                <li><a href="@Url.Action("Create", "Users")" class="col-2 text-white">Nouvel Utilisateur</a></li>
-                <li><a href="@Url.Action("Index", "Dashboard", new { area = "BackOffice" })" class="col-2 text-white">Back Office</a></li>
+                <li><h1 class="lead text-white">BackOffice</h1></li>
+                <li><a href="@Url.Action("Index", "Dashboard")" class="col-2 text-white">Accueil BackOffice</a></li>
+                <li><a href="@Url.Action("Index", "Home", new { area = "" })" class="col-2 text-white">App</a></li>
             </ul>
         </nav>
 
@@ -28,8 +26,8 @@
     </div>
     <div class="container">
         <div class="row">
-            <footer class="bg-light w-100">
-                &copy; POEC Rouen 2018
+            <footer class="bg-info w-100">
+                &copy; BACKOFFICE POEC Rouen 2018
             </footer>
         </div>
     </div>

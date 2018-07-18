@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Roomax.Utils.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -28,12 +29,14 @@ ErrorMessage = "L'adresse mail n'est pas au bon format")]
 
         [Required(ErrorMessage = "Le champ {0} est obligatoire")]
         [Display(Name = "Email :")]
+        [ExistingEmail(ErrorMessage ="L'adresse email existe déjà")]
         public string Mail { get; set; }
 
 
         [Required(ErrorMessage = "Le champ {0} est obligatoire")]
         [Display(Name = "Date de Naissance :")]
         [DataType(DataType.Date)]
+        [Major(18, ErrorMessage = "Vous devez être majeur")]
         public DateTime BirthDate { get; set; }
 
 
@@ -43,11 +46,13 @@ ErrorMessage = "L'adresse mail n'est pas au bon format")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+
+        [NotMapped]
         [Compare("Password", ErrorMessage = "Erreur sur la confirmation du mot de passe")]
         [Required(ErrorMessage = "Le champ {0} est obligatoire")]
         [Display(Name = "Confirmez le Mot De Passe :")]
         [DataType(DataType.Password)]
-        public string ComfirmedPassword { get; set; }
+        public string ConfirmedPassword { get; set; }
 
         [Required(ErrorMessage = "Civilité obligatoire")]
         [Display(Name = "Civilité :")]
