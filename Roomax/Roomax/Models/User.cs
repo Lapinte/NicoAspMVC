@@ -13,7 +13,7 @@ namespace Roomax.Models
 
 
         [Required(ErrorMessage = "Le champ {0} est obligatoire")]
-        [Display(Name = "Nom :")]
+        [Display(Name = "Nom")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Le champ {0} doit contenir entre {2} et {1} caractères")]
         public string LastName { get; set; }
 

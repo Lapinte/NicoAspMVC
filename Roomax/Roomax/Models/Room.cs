@@ -30,7 +30,7 @@ namespace Roomax.Models
 
         [Required(ErrorMessage = "La Date est obligatoire")]
         [Display(Name = "Date de création")]
-        [DataType(DataType.Currency)]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dddd dd MMMM yyyy}")]
         public DateTime CreatedAt { get; set; }
 
@@ -39,5 +39,10 @@ namespace Roomax.Models
         public int? UserID  { get; set; }
         [ForeignKey("UserID")]
         public User User { get; set; }
+
+        [Display(Name = "Catégorie")]
+        public int? CategoryID { get; set; }
+        [ForeignKey("CategoryID")]
+        public Category Category { get; set; }
     }
 }
