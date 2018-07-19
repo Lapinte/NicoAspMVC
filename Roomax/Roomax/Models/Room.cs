@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Roomax.Models
 {
@@ -21,9 +22,9 @@ namespace Roomax.Models
 
         [Required(ErrorMessage = "Le Tarif est obligatoire")]
         [Display(Name = "Tarif jour")]
-        [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
+        [AllowHtml]
         [Display(Name = "Description")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
@@ -41,7 +42,7 @@ namespace Roomax.Models
         public User User { get; set; }
 
         [Display(Name = "Catégorie")]
-        public int? CategoryID { get; set; }
+        public int CategoryID { get; set; }
         [ForeignKey("CategoryID")]
         public Category Category { get; set; }
     }

@@ -88,6 +88,10 @@ namespace Roomax.Areas.BackOffice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Capacity,Price,Description,CreatedAt,UserID, CategoryID")] Room room)
         {
+            //var old = db.Rooms.Find(room.ID);
+            //room.CreatedAt = old.CreatedAt;
+            //db.Entry(old).State = EntityState.Detached;
+
             if (ModelState.IsValid)
             {
                 db.Entry(room).State = EntityState.Modified;
