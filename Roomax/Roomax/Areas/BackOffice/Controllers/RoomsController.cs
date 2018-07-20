@@ -72,7 +72,7 @@ namespace Roomax.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = db.Rooms.Include(x=>x.Files).SingleOrDefault(x=>x.ID==id);
+            Room room = db.Rooms.Include(x => x.Files).SingleOrDefault(x => x.ID == id);
             if (room == null)
             {
                 return HttpNotFound();
@@ -134,7 +134,10 @@ namespace Roomax.Areas.BackOffice.Controllers
         public ActionResult AddFile(int id, HttpPostedFileBase upload)
         {
             if (upload == null)
-                return RedirectToAction("Edit", new {id}); 
+            {
+                return RedirectToAction("Edit", new { id });
+            }
+
             if (upload.ContentLength > 0)
             {
                 var model = new RoomFile();
@@ -150,9 +153,9 @@ namespace Roomax.Areas.BackOffice.Controllers
 
                 db.RoomFiles.Add(model);
                 db.SaveChanges();
-                
+
                 return RedirectToAction("Edit", new { id = model.RoomID });
-                
+
             }
             else
             {
@@ -160,7 +163,7 @@ namespace Roomax.Areas.BackOffice.Controllers
             }
         }
         // GET: BackOffice/Rooms/Delete/5
-        
+
         public ActionResult DeleteFile(int id)
         {
             RoomFile roomfile = db.RoomFiles.Find(id);
