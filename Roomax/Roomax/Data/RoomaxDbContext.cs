@@ -17,6 +17,7 @@ namespace Roomax.Data
         public DbSet<Civility> Civilities { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<RoomFile> RoomFiles { get; set; }
     }
 
 

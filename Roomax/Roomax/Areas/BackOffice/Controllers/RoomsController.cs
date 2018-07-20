@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -18,7 +19,7 @@ namespace Roomax.Areas.BackOffice.Controllers
         // GET: BackOffice/Rooms
         public ActionResult Index()
         {
-            var rooms = db.Rooms.Include(r => r.User).Include(r=> r.Category);
+            var rooms = db.Rooms.Include(r => r.User).Include(r => r.Category);
             return View(rooms.ToList());
         }
 
@@ -128,6 +129,26 @@ namespace Roomax.Areas.BackOffice.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult AddFile(int id, HttpPostedFileBase upload)
+        {
+            var model = new RoomFile();
+
+            model.RoomID = id;
+            model.Name = upload.FileName;
+            model.ContentType = upload.ContentType;
+
+            using (var reader = new BinaryReader(upload.InputStream))
+            {
+                model.Content = reader.ReadBytes(upload.ContentLength);
+            }
+
+            db.RoomFiles.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("Edit", new { id = model.RoomID });
+        }
+
 
         protected override void Dispose(bool disposing)
         {

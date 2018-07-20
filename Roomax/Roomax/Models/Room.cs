@@ -45,5 +45,7 @@ namespace Roomax.Models
         public int CategoryID { get; set; }
         [ForeignKey("CategoryID")]
         public Category Category { get; set; }
+
+        public ICollection<RoomFile> Files { get; set; }
     }
 }
