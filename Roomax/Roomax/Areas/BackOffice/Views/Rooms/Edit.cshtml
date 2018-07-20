@@ -78,11 +78,16 @@
             </div>
         </div>
     </div>
-
-
 }
 
 <hr />
+
+@foreach (var file in Model.Files)
+{
+    <img src="data:@file.ContentType;base64,@Convert.ToBase64String(file.Content)" width="80" height="80" />
+    <a href="@Url.Action("DeleteFile","Rooms", new { id=file.ID })" class="btn btn-info">Supprimer</a>
+}
+
 
 <form action="@Url.Action("Addfile","Rooms")" method="post" enctype="multipart/form-data">
     @Html.HiddenFor(model => model.ID)
@@ -103,4 +108,5 @@
     <script>
         tinymce.init({ selector: "#Description" })
     </script>
+
 }

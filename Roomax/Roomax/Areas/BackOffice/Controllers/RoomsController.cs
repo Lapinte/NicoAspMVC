@@ -72,7 +72,7 @@ namespace Roomax.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = db.Rooms.Find(id);
+            Room room = db.Rooms.Include(x=>x.Files).SingleOrDefault(x=>x.ID==id);
             if (room == null)
             {
                 return HttpNotFound();
@@ -133,20 +133,40 @@ namespace Roomax.Areas.BackOffice.Controllers
         [HttpPost]
         public ActionResult AddFile(int id, HttpPostedFileBase upload)
         {
-            var model = new RoomFile();
-
-            model.RoomID = id;
-            model.Name = upload.FileName;
-            model.ContentType = upload.ContentType;
-
-            using (var reader = new BinaryReader(upload.InputStream))
+            if (upload == null)
+                return RedirectToAction("Edit", new {id}); 
+            if (upload.ContentLength > 0)
             {
-                model.Content = reader.ReadBytes(upload.ContentLength);
-            }
+                var model = new RoomFile();
 
-            db.RoomFiles.Add(model);
+                model.RoomID = id;
+                model.Name = upload.FileName;
+                model.ContentType = upload.ContentType;
+
+                using (var reader = new BinaryReader(upload.InputStream))
+                {
+                    model.Content = reader.ReadBytes(upload.ContentLength);
+                }
+
+                db.RoomFiles.Add(model);
+                db.SaveChanges();
+                
+                return RedirectToAction("Edit", new { id = model.RoomID });
+                
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+        }
+        // GET: BackOffice/Rooms/Delete/5
+        
+        public ActionResult DeleteFile(int id)
+        {
+            RoomFile roomfile = db.RoomFiles.Find(id);
+            db.RoomFiles.Remove(roomfile);
             db.SaveChanges();
-            return RedirectToAction("Edit", new { id = model.RoomID });
+            return RedirectToAction("Edit", new { id = roomfile.RoomID });
         }
 
 
