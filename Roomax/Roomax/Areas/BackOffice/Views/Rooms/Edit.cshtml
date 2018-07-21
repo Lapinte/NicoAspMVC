@@ -93,7 +93,7 @@
     @Html.HiddenFor(model => model.ID)
     <div class="form-group">
         <label class="control-label col-md-2">Fichier</label>
-        <input id="upload" type="file" name="upload" class="form-control" />
+        <input id="upload" type="file" value="" name="upload" class="form-control" />
         <button type="submit" class="btn btn-warning">Ajouter le fichier</button>
     </div>
 
@@ -109,14 +109,19 @@
         tinymce.init({ selector: "#Description" })
     </script>
     <script>
-        $(document).ready(function {
+        $(document).ready(function() {
             $("#formAddFile").submit(function (ev) {
-                if ($("#upload").val == null) {
-                    ev.preventDefault;
-                    alert("Veuillez ajouter un fichier");
+                ev.preventDefault();
+                if ($("#upload").get(0).files.length === 0) {
+                    window.alert("Aucun fichier de sélectionné");
                 }
+                @*else {
+                    var url = "/backoffice/rooms/addfiles?id=" + @Model.ID + "&upload=" + ;
+                    window.location.href = url; 
+                }*@
+                
             })
-        })
+        });
     </script>
 
 }
