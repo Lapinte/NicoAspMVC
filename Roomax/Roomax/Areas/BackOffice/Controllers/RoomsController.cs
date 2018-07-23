@@ -8,10 +8,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Roomax.Data;
+using Roomax.Filters;
 using Roomax.Models;
 
 namespace Roomax.Areas.BackOffice.Controllers
 {
+    [AuthenticationFilter]
     public class RoomsController : Controller
     {
         private RoomaxDbContext db = new RoomaxDbContext();

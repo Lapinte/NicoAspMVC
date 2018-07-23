@@ -108,20 +108,20 @@
     <script>
         tinymce.init({ selector: "#Description" })
     </script>
-    <script>
-        $(document).ready(function() {
-            $("#formAddFile").submit(function (ev) {
-                ev.preventDefault();
-                if ($("#upload").get(0).files.length === 0) {
-                    window.alert("Aucun fichier de sélectionné");
-                }
-                @*else {
-                    var url = "/backoffice/rooms/addfiles?id=" + @Model.ID + "&upload=" + ;
-                    window.location.href = url; 
-                }*@
-                
-            })
-        });
-    </script>
+    @*<script>
+                $(document).ready(function() {
+                    $("#formAddFile").submit(function (ev) {
+                        ev.preventDefault();
+                        if ($("#upload").get(0).files.length === 0) {
+                            window.alert("Aucun fichier de sélectionné");
+                        }
+                        else {
+                            var url = "/backoffice/rooms/addfiles?id=" + @Model.ID + "&upload=" + ;
+                            window.location.href = url;
+                        }
+
+        })
+                });
+            </script>*@
 
 }
