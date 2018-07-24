@@ -14,10 +14,8 @@ using Roomax.Models;
 namespace Roomax.Areas.BackOffice.Controllers
 {
     [AuthenticationFilter]
-    public class RoomsController : Controller
+    public class RoomsController : BaseController
     {
-        private RoomaxDbContext db = new RoomaxDbContext();
-
         // GET: BackOffice/Rooms
         public ActionResult Index()
         {
@@ -64,6 +62,7 @@ namespace Roomax.Areas.BackOffice.Controllers
 
             ViewBag.UserID = new SelectList(db.Users, "ID", "LastName", room.UserID);
             ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", room.CategoryID);
+            TempData["Message"] = "Salle créée";
             return View(room);
         }
 
@@ -99,6 +98,7 @@ namespace Roomax.Areas.BackOffice.Controllers
             {
                 db.Entry(room).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["Message"] = "Salle modifiée";
                 return RedirectToAction("Index");
             }
             ViewBag.UserID = new SelectList(db.Users, "ID", "LastName", room.UserID);
@@ -129,6 +129,7 @@ namespace Roomax.Areas.BackOffice.Controllers
             Room room = db.Rooms.Find(id);
             db.Rooms.Remove(room);
             db.SaveChanges();
+            TempData["Message"] = "Salle supprimée";
             return RedirectToAction("Index");
         }
 
@@ -137,6 +138,7 @@ namespace Roomax.Areas.BackOffice.Controllers
         {
             if (upload == null)
             {
+                TempData["Message"] = "Aucun fichier selectionné";
                 return RedirectToAction("Edit", new { id });
             }
 
@@ -155,7 +157,7 @@ namespace Roomax.Areas.BackOffice.Controllers
 
                 db.RoomFiles.Add(model);
                 db.SaveChanges();
-
+                TempData["Message"] = "Fichier ajouté";
                 return RedirectToAction("Edit", new { id = model.RoomID });
 
             }
@@ -171,17 +173,8 @@ namespace Roomax.Areas.BackOffice.Controllers
             RoomFile roomfile = db.RoomFiles.Find(id);
             db.RoomFiles.Remove(roomfile);
             db.SaveChanges();
+            TempData["Message"] = "Fichier supprimé";
             return RedirectToAction("Edit", new { id = roomfile.RoomID });
-        }
-
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

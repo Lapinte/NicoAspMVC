@@ -13,10 +13,8 @@ using Roomax.Models;
 namespace Roomax.Areas.BackOffice.Controllers
 {
     [AuthenticationFilter]
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseController
     {
-        private RoomaxDbContext db = new RoomaxDbContext();
-
         // GET: BackOffice/Categories
         public ActionResult Index()
         {
@@ -55,6 +53,7 @@ namespace Roomax.Areas.BackOffice.Controllers
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
+                this.DisplayMessage("Catégorie enregistrée", MessageType.SUCCESS);
                 return RedirectToAction("Index");
             }
 
@@ -87,6 +86,7 @@ namespace Roomax.Areas.BackOffice.Controllers
             {
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["Message"] = "Catégorie modifiée";
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -115,16 +115,9 @@ namespace Roomax.Areas.BackOffice.Controllers
             Category category = db.Categories.Find(id);
             db.Categories.Remove(category);
             db.SaveChanges();
+            TempData["Message"] = "Catégorie supprimée";
+            TempData["TypeMsg"] = "alert alert-success";
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
